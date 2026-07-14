@@ -2,7 +2,7 @@
 title: The Incuscope
 description: This was my primary work during my time in the varanasio group. It is a device to remotely monitor cells while they grow inside of the incubator.
 creator: Ruby Mykkanen
-collaborators: Ariel Slonlick, Jimin Kang
+collaborators: [Ariel Slonlick, Jimin Kang]
 completed: 12/10/2025
 tags: [Art, Electronics]
 ---
