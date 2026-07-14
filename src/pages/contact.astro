@@ -1,0 +1,191 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Text from "@/components/Text.astro";
+
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Spinner } from "@/components/ui/spinner";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
+---
+
+<Layout>
+  <Text as="h1" variant="mainHeading">Contact Me</Text>
+  <Text>
+    Don't hesitate to reach out with ideas, oppourtunities, or questions!
+  </Text>
+  <Text
+    >To get in touch, use the form below or <a
+      href="https://www.linkedin.com/in/ruby-mykkanen-a4b18035b/"
+    >
+      connect with me on LinkedIn.
+    </a></Text
+  >
+  <Card class="p-8 max-w-lg">
+    <form id="client-action-form" class="w-full max-w-xl" novalidate>
+      <FieldSet>
+        <FieldLegend
+          ><Text as="span" variant="majorHeading">Send me a message </Text>
+        </FieldLegend>
+        <FieldGroup>
+          <Field>
+            <FieldLabel for="name" class={"sr-only"}>Name</FieldLabel>
+            <Input
+              id="name"
+              name="name"
+              placeholder="Full Name"
+              class={"bg-primary text-primary-foreground placeholder:text-primary-foreground/50"}
+            />
+            <FieldError
+              forceMount
+              class="hidden"
+              data-error-for="name"
+              class="text-red-500"
+            />
+          </Field>
+
+          <Field>
+            <FieldLabel for="email" class={"sr-only"}>Email</FieldLabel>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="mail@example.com"
+              class={"bg-primary text-primary-foreground placeholder:text-primary-foreground/50"}
+            />
+            <FieldError
+              forceMount
+              class="hidden"
+              data-error-for="email"
+              class="text-red-500"
+            />
+          </Field>
+
+          <Field>
+            <FieldLabel for="message" class={"sr-only"}>Message</FieldLabel>
+            <Textarea
+              id="message"
+              name="message"
+              placeholder="Type your message here..."
+              class={"bg-primary text-primary-foreground placeholder:text-primary-foreground/50"}
+            />
+
+            <FieldError
+              forceMount
+              class="hidden"
+              data-error-for="message"
+              class="text-red-500"
+            />
+          </Field>
+
+          <div class="flex gap-4">
+            <Button
+              type="submit"
+              class="w-fit hover:-translate-y-0.5 transition"
+              data-submit-button
+            >
+              <Spinner data-icon class="hidden" />
+              <span data-submit-label>Send Message</span>
+            </Button>
+            <Button
+              type="reset"
+              variant="outline"
+              class="w-fit hover:-translate-y-0.5 transition"
+              data-reset-button
+            >
+              Reset
+            </Button>
+          </div>
+        </FieldGroup>
+      </FieldSet>
+    </form>
+  </Card>
+</Layout>
+
+<script>
+  import { actions, isInputError } from "astro:actions";
+
+  const form = document.getElementById(
+    "client-action-form",
+  ) as HTMLFormElement | null;
+  const submitButton = form?.querySelector("[data-submit-button]");
+  const resetButton = form?.querySelector("[data-reset-button]");
+  const submitLabel = form?.querySelector("[data-submit-label]");
+  const submitSpinner = submitButton?.querySelector('[data-slot="spinner"]');
+  const idleLabel =
+    submitLabel instanceof HTMLElement
+      ? submitLabel.textContent || "Send Message"
+      : "Send Message";
+  const wait = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
+  const setSubmitting = (submitting: boolean) => {
+    if (submitButton instanceof HTMLButtonElement) {
+      submitButton.disabled = submitting;
+    }
+
+    if (submitSpinner instanceof Element) {
+      submitSpinner.classList.toggle("hidden", !submitting);
+    }
+    if (submitLabel instanceof HTMLElement) {
+      submitLabel.textContent = submitting ? "Submitting..." : idleLabel;
+    }
+  };
+
+  const clearErrors = () => {
+    form?.querySelectorAll("[data-error-for]").forEach((el) => {
+      if (!(el instanceof HTMLElement)) return;
+
+      el.textContent = "";
+      el.classList.add("hidden");
+    });
+  };
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    // resetErrors();
+    setSubmitting(true);
+    clearErrors();
+
+    const formData = new FormData(form);
+
+    const [result] = await Promise.all([
+      actions.sendMessage(formData),
+      wait(900),
+    ]);
+    setSubmitting(false);
+
+    if (result.error && isInputError(result.error)) {
+      const fields = result.error.fields;
+
+      for (const [field, errors] of Object.entries(fields)) {
+        const node = form?.querySelector(`[data-error-for="${field}"]`);
+        if (!(node instanceof HTMLElement)) continue;
+
+        node.textContent = errors[0];
+        node.classList.remove("hidden");
+      }
+
+      // write message text into [data-error-for] nodes and remove `hidden`
+      return;
+    }
+
+    if (result.data) {
+      form.reset();
+    }
+  });
+
+  form?.addEventListener("reset", () => {
+    setSubmitting(false);
+    clearErrors();
+    // clear custom error nodes for [data-error-for]
+  });
+</script>

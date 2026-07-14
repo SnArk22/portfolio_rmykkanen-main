@@ -1,0 +1,96 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Text from "@/components/Text.astro";
+import Card from "@/components/Card.astro";
+import { Badge } from "@/components/ui/badge";
+import { Image } from "astro:assets";
+
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const allProjects = await getCollection("projects");
+  const allNewsletters = await getCollection("newsletters");
+
+  const allTags = new Set([
+    ...allProjects.flatMap((project) => project.data.tags ?? []),
+    ...allNewsletters.flatMap((newsletter) => newsletter.data.tags ?? []),
+  ]);
+
+  return [...allTags].map((tag) => {
+    const projects = allProjects.filter((project) =>
+      project.data.tags?.includes(tag),
+    );
+    const newsletters = allNewsletters.filter((newsletter) =>
+      newsletter.data.tags?.includes(tag),
+    );
+    return { params: { tag }, props: { projects, newsletters } };
+  });
+};
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  [
+    "/src/assets/projects/**/*.{webp,jpg,png}",
+    "/src/assets/newsletters/**/*.{webp,jpg,png}",
+  ],
+  { eager: true },
+);
+
+const { projects, newsletters } = Astro.props;
+const { tag } = Astro.params;
+
+projects.forEach((project) => {
+  if (!allImages[`/src/assets/projects/${project.id}/featured.webp`]) {
+    throw new Error(
+      `No featured image found for project ${project.id}. Add a an image titled 'featured.webp' to folder '/src/assets/projects/${project.id}/'`,
+    );
+  }
+});
+
+newsletters.forEach((newsletter) => {
+  if (!allImages[`/src/assets/newsletters/${newsletter.id}/featured.webp`]) {
+    throw new Error(
+      `No featured image found for newsletter ${newsletter.id}. Add a an image titled 'featured.webp' to folder '/src/assets/newsletter/${newsletter.id}/'`,
+    );
+  }
+});
+---
+
+<Layout>
+  <h1 class="sr-only">Projects and Newsletters Tagged with {tag}</h1>
+  {
+    projects.length > 0 && (
+      <div class="flex flex-col gap-8 justify-center">
+        <div class="flex gap-4 items-center">
+          <Text as="h2" variant="subHeading">
+            Projects tagged with{" "}
+          </Text>
+          <Badge class="p-4">{tag}</Badge>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {projects.map((project) => (
+            <Card item={project} variant="grid" />
+          ))}
+        </div>
+      </div>
+    )
+  }
+  {
+    newsletters.length > 0 && (
+      <div class="flex flex-col gap-8 justify-center">
+        <div class="flex gap-4 items-center">
+          <Text as="h2" variant="subHeading">
+            Newsletters tagged with
+          </Text>
+          <Badge class="p-4">{tag}</Badge>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {newsletters.map((newsletter) => (
+            <Card item={newsletter} variant="grid" />
+          ))}
+        </div>
+      </div>
+    )
+  }
+</Layout>

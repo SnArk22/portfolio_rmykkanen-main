@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+import profileImg from "../assets/home/profile.webp";
+import { Image } from "astro:assets";
+import Text from "../components/Text.astro";
+---
+
+<Layout>
+  <div class="flex flex-col lg:flex-row items-center gap-8">
+    <Image
+      src={profileImg}
+      alt={"profile picture"}
+      class={"w-[300px] h-[350px] rounded-[30%] object-cover shrink-0"}
+    />
+    <div class="flex flex-col gap-4">
+      <Text
+        as="h1"
+        variant="mainHeading"
+        class:list={"text-center lg:text-left"}>Ruby<br>Mykkanen</Text
+      >
+      <Text
+        as="h2"
+        variant="subHeading"
+        class:list={"text-center lg:text-left"}
+        >Engineer, Student, Botanist, Musician</Text
+      >
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <p>
+      I am a freshman student at the Massachusetts Institute of Technology. I
+      plan to pursue a degree in Mechanical and Biological Engineering.
+    </p>
+    <p>My primary interests lie in:</p>
+    <ul class="pl-2">
+      <li>Bioprinting and tissue engineering</li>
+
+      <li>Designing scientific instruments for biological study</li>
+
+      <li>Genetic engineering of plants</li>
+    </ul>
+    <a href="/projects/" class="hover:text-secondary">see my stuff</a>
+  </div>
+</Layout>

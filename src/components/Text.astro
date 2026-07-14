@@ -1,0 +1,28 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+
+const variants = {
+  default: "text-foreground",
+  mainHeading:
+    "font-(family-name:--font-mono) text-6xl text-primary font-bold",
+  majorHeading: "text-secondary text-4xl font-(family-name:--font-serif)",
+  subHeading: "text-secondary text-2xl font-(family-name:--font-serif)",
+};
+
+type Variant = keyof typeof variants;
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+  variant?: Variant;
+}>;
+
+const {
+  as: As = "p",
+  variant = "default",
+  ...attrs
+} = Astro.props as Props<HTMLTag>;
+---
+
+<As class:list={variants[variant]} {...attrs}>
+  <slot />
+</As>

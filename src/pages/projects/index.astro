@@ -1,0 +1,26 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Text from "@/components/Text.astro";
+import Card from "@/components/Card.astro";
+import { getCollection } from "astro:content";
+import TagCloud from "@/components/TagCloud.astro";
+
+const projects = await getCollection("projects");
+
+const allTags = new Set(projects.flatMap((project) => project.data.tags ?? []));
+---
+
+<Layout>
+      <Text as="h1" variant="mainHeading">Projects</Text>
+      <Text as="h2" variant="subHeading" class:list={"text-center lg:text-left"}>
+        Select a cateogory to view projects in that category
+      </Text>
+  <div class="relative left-1/2 w-screen -translate-x-1/2 px-4">
+    <div class="mx-auto max-w-7xl">
+      <TagCloud tags={[...allTags]} />
+      <div class="columns-1 gap-8 lg:columns-3">
+        {projects.map((project) => <Card item={project} variant="grid" />)}
+      </div>
+    </div>
+  </div>
+</Layout>

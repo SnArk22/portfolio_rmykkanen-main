@@ -1,0 +1,22 @@
+---
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<Card class="flex-row gap-4 p-8 items-center justify-center flex-wrap">
+  {
+    tags.map((tag) => (
+      <Badge class={"hover:-translate-y-0.5 transition"}>
+        <a href={`/tag/${tag}`} class="relative">
+          {tag}
+        </a>
+      </Badge>
+    ))
+  }
+</Card>

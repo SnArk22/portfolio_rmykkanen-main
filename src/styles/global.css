@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');  
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./theme.css";
+/* src/styles/global.css */
+
+@theme {
+  --spacing: 0.25rem /* 4px */;
+  --layout-base: 70rem;
+  --layout-full: 70%;
+}
+
+@utility layout-* {
+  --layout-max-width: --value(--layout-*);
+  --layout-padding: calc(var(--spacing) * 8);
+
+  display: grid;
+
+  place-content: center;
+  grid-template-columns:
+    minmax(var(--layout-padding), 1fr)
+    min(var(--layout-max-width), 70% - var(--layout-padding) * 2)
+    minmax(var(--layout-padding), 1fr);
+
+  & > * {
+    grid-column: 2 / 3;
+  }
+
+  & > .full-width {
+    grid-column: 1 / -1;
+  }
+}

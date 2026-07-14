@@ -1,0 +1,172 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import profileImg from "@/assets/about/profile.webp";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Text from "@/components/Text.astro";
+---
+
+<Layout>
+  <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+    <Image
+      src={profileImg}
+      alt={"profile picture"}
+      class={"w-[300px] h-[350px] rounded-[30%] object-cover shrink-0"}
+    />
+    <div class="flex flex-col gap-4">
+      <Text
+        as="h1"
+        variant="mainHeading"
+        class:list={"text-center lg:text-left"}>About Me</Text
+      >
+      <p>
+        As as student at MIT, my current goal is to learn as much as possible,
+        and gain as much experience as I can. In the long term I hope to have
+        experiences, connections and skills I necessary to build technology that
+        can have a tangible and positive impact on society and human health.
+      </p>
+      <p class="text-secondary">
+        Read more about me below, or peruse my resume for more information
+      </p>
+      <Button
+        as="a"
+        class={"w-48 hover:-translate-y-0.5 transition"}
+        href={"RubyMykkanen_Resume.pdf"}
+        download>Download Resume</Button
+      >
+    </div>
+  </div>
+
+  <Tabs defaultValue="academic">
+    <TabsList
+      variant="line-animated"
+      class="mb-4 gap-y-2 gap-x-8 flex-wrap h-auto!"
+      size={"lg"}
+    >
+      <TabsTrigger value="interests" class="cursor-pointer"
+        >Academic Interests</TabsTrigger
+      >
+      <TabsTrigger value="skills" class="cursor-pointer">Skills</TabsTrigger>
+      <TabsTrigger value="groups" class="cursor-pointer">Groups</TabsTrigger>
+      <TabsTrigger value="future" class="cursor-pointer"
+        >Future Plans</TabsTrigger
+      >
+    </TabsList>
+    <TabsContent value="interests">
+      <Text as="h2" variant="majorHeading" class={"mb-4"}
+        >Academic Interests</Text
+      >
+      <ul class="flex flex-col gap-4">
+        <li>
+          <Text as="h3" variant="subHeading">Bioprinting</Text>
+          <p>
+            I am currently interested in synthetic biology, tissue engineering
+            and bioprinting, particularly the technologies that facilitate this.
+            I think the future of organ transplants is going to be synthetic
+            printed organs, and I cannot wait to help be a part of this process.
+          </p>
+        </li>
+        <li>
+          <Text as="h3" variant="subHeading">Prosthetics</Text>
+          <p>
+            Another Interest of mine is human prosthetics. I wonder how the
+            areas of bio-printing and tissue engineering can be applied in this
+            area. I see a future where synthetic human tissues can be
+            incorporated into prosthetics to increase their realism, sensitivity
+            and effectiveness.
+          </p>
+        </li>
+        <li>
+          <Text as="h3" variant="subHeading">Botany</Text>
+          <p>
+            Finally I have always had a passion for botany, and in recent days I
+            have become enthralled by the process of genetically modifying
+            plants. Though I do not see any direct human applications from this
+            I am excited by the do-ability and wonder of genetics. I envision
+            plants that could be more resilient, smell nicer or be more
+            beautiful. Truly anything is possible!
+          </p>
+        </li>
+      </ul>
+    </TabsContent>
+    <TabsContent value="skills">
+      <Text as="h2" variant="majorHeading" class={"mb-4"}>Skills</Text>
+      <ul class="flex flex-col gap-4">
+        <li>
+          <Text as="h3" variant="subHeading">Digital</Text>
+          <ul class="flex flex-col gap-2">
+            <li>
+              <b>Coding:</b> HTML, CSS, Astro, Google Sheets, Intermediate Python
+            </li>
+            <li>
+              <b>Cad and 3-D design:</b> FreeCad, 3-D filament Printing Slicing Software,
+              Blender
+            </li>
+            <li>
+              <b>Graphic design:</b> Autodesk Sketchbook, Pixelmator Pro, Adobe Photoshop,
+              Canva, Google Slides
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <Text as="h3" variant="subHeading">Physical</Text>
+          <ul class="flex flex-col gap-2">
+            <li>
+              <b>Power tools:</b> Drill, Table Saw, Miter Saw, Belt Sander, Dremel,
+              Soldering Iron, Angle Grinder, Sewing Machine, Laser Cutter
+            </li>
+            <li>
+              <b>Artistic:</b> Mural Painting, Acrylic Painting, Watercolor, Portrait
+              Sketching, Digital Drawing, linocut Print Carving, Oragami
+            </li>
+            <li>
+              <b>Music:</b> Bb Clarinet (8 years experience), Eb Clarinet, Bass Clarinet,
+              Trombone, Bassoon, Arranging for Band and Acapella, Singing, Beginner:
+              Piano, Guitar, Trumpet, Oboe
+            </li>
+            <li>
+              <b>Other:</b> 3-D printing, Insect Pinning and Catching, Growing Tropical
+              Plants, Bonsai Training
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </TabsContent>
+    <TabsContent value="groups">
+      <Text as="h2" variant="majorHeading" class={"mb-4"}>Groups</Text>
+
+      <ul class="flex flex-col gap-4">
+        <li>
+          <Text as="h3" variant="subHeading">MIT Wind Ensemble</Text>
+          <p>I am a member of the MIT Wind Ensemble, where I play clarinet</p>
+        </li>
+        <li>
+          <Text as="h3" variant="subHeading">Choralaries of MIT</Text>
+          <p>
+            I am a member of the Choralaries of MIT, an acapella group on campus
+          </p>
+        </li>
+        <li>
+          <Text as="h3" variant="subHeading">Varanasi group researcher</Text>
+          <p>
+            I am a member of the Varanasi research group, where I help design
+            and build scientific instruments for biological study
+          </p>
+        </li>
+      </ul>
+    </TabsContent>
+    <TabsContent value="future">
+      <Text as="h2" variant="majorHeading" class={"mb-4"}>Future Plans</Text>
+      <p>
+        In the future I hope to gain research experience in bioprinting and
+        tissue engineering, as well as internships in biotech companies. I also
+        hope to continue developing my skills in coding, 3-D design and
+        scientific instrument design. Long term I hope to work in biotech
+        research and development, particularly in the area of bioprinting and
+        synthetic organs.
+      </p>
+    </TabsContent>
+  </Tabs>
+</Layout>

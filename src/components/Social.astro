@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon/components";
+import { Button } from "./ui/button";
+
+interface Props {
+  platform: string;
+  username: string;
+}
+
+const { platform, username } = Astro.props;
+---
+
+<Button
+  variant={"ghost"}
+  as="a"
+  href={`https://www.${platform}.com/${username}`}
+  class={"hover:-translate-y-0.5 transition"}
+>
+  <Icon name={`simple-icons:${platform}`} />
+  {platform}
+</Button>
