@@ -59,19 +59,23 @@ const galleryImages = Object.entries(allImages)
 
   <Content />
 
-  {
-    galleryImages.length > 0 && (
-      <Carousel class="gap-4 p-2" align="center">
-        {galleryImages.map((image) => (
-          <CarouselSlide>
-            <Image
-              src={image}
-              alt={"project gallery image"}
-              class="w-120 h-96 object-cover rounded-lg"
-            />
-          </CarouselSlide>
-        ))}
-      </Carousel>
-    )
-  }
+  <div class="relative left-1/2 w-screen -translate-x-1/2 px-4">
+    
+      {
+        galleryImages.length > 0 && (
+          <div class="columns-1 gap-8 lg:columns-3">
+            <CardRoot>
+              {galleryImages.map((image) => (
+                  <Image
+                    src={image}
+                    alt={"project gallery image"}
+                    class="w-120 object-cover rounded-lg"
+                  />
+              ))}
+            </CardRoot>
+          </div>
+        )
+      }
+  
+  </div>
 </Layout>

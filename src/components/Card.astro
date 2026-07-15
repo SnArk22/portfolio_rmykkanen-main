@@ -61,7 +61,7 @@ if (!allImages[`/src/assets/${item.collection}/${item.id}/featured.webp`]) {
       item.collection === "newsletters" && "md:col-span-6 md:row-span-1",
     ]}
     >
-    <div class=" overflow-hidden rounded-lg">
+    <div class="overflow-hidden rounded-lg">
       <Image
         src={allImages[`/src/assets/${item.collection}/${item.id}/featured.webp`]
           .default}
@@ -96,7 +96,7 @@ if (!allImages[`/src/assets/${item.collection}/${item.id}/featured.webp`]) {
       }
     </CardTitle>
 
-    <CardDescription class:list={"flex gap-4 justify-start md:row-start-1 md:col-start-4 md:col-span-3  "}>
+    <CardDescription class:list={"flex gap-2 row-start-1 col-start-4 col-span-3  "}>
       {
         item.data.tags &&
           variant === "single" &&
