@@ -85,6 +85,15 @@ import { Textarea } from "@/components/ui/textarea";
               />
             </Field>
 
+            <input
+              type="text"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+              class="absolute -left-[9999px]"
+            />
+
             <div class="flex gap-4">
               <Button
                 type="submit"
@@ -106,6 +115,7 @@ import { Textarea } from "@/components/ui/textarea";
           </FieldGroup>
         </FieldSet>
       </form>
+      <p data-success-box class="text-sm text-primary font-bold"></p>
     </Card>
   </div>
 </Layout>
@@ -124,8 +134,7 @@ import { Textarea } from "@/components/ui/textarea";
     submitLabel instanceof HTMLElement
       ? submitLabel.textContent || "Send Message"
       : "Send Message";
-  const wait = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
+  const successEl = document.querySelector("[data-success-box]");
 
   const setSubmitting = (submitting: boolean) => {
     if (submitButton instanceof HTMLButtonElement) {
@@ -151,16 +160,13 @@ import { Textarea } from "@/components/ui/textarea";
 
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    // resetErrors();
     setSubmitting(true);
     clearErrors();
 
     const formData = new FormData(form);
 
-    const [result] = await Promise.all([
-      actions.sendMessage(formData),
-      wait(900),
-    ]);
+    const result = await actions.sendMessage(formData);
+
     setSubmitting(false);
 
     if (result.error && isInputError(result.error)) {
@@ -172,13 +178,19 @@ import { Textarea } from "@/components/ui/textarea";
 
         node.textContent = errors[0];
         node.classList.remove("hidden");
+
+        console.error(result.error.message);
       }
 
-      // write message text into [data-error-for] nodes and remove `hidden`
       return;
     }
 
     if (result.data) {
+      if (successEl) {
+        successEl.innerHTML = result.data.message;
+        successEl.classList.remove("hidden");
+      }
+
       form.reset();
     }
   });
@@ -186,6 +198,14 @@ import { Textarea } from "@/components/ui/textarea";
   form?.addEventListener("reset", () => {
     setSubmitting(false);
     clearErrors();
-    // clear custom error nodes for [data-error-for]
+  });
+
+  resetButton?.addEventListener("click", () => {
+    setSubmitting(false);
+    clearErrors();
+    if (successEl) {
+      successEl.innerHTML = "";
+      successEl.classList.add("hidden");
+    }
   });
 </script>
