@@ -125,7 +125,9 @@ if (!allImages[`/src/assets/${item.collection}/${item.id}/featured.webp`]) {
           {variant === "single" && (
             <>
               <Text>{`Creator: ${item.data.creator}`}</Text>
-              <Text>{`Collaborators: ${item.data.collaborators}`}</Text>
+              {item.data.collaborators && (
+                <Text>{`Collaborators: ${item.data.collaborators}`}</Text>
+              )}
               {item.data.completed && (
                 <Text>{`Project Completed on ${item.data.completed}`}</Text>
               )}
