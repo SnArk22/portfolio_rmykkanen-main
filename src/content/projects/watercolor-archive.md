@@ -1,7 +1,7 @@
 ---
-title: Learning how to Build Simple Electronic Circuits using Breadboads and Arduino
-description: In this project, I acqured some basic electronic parts for the purpose of teaching myslef how to make more complex circuits, and integrate computer programming.
+title: Watercolor Archive
+description: This is a collection of some of my woatercolor works
 creator: Ruby Mykkanen
-completed: 12/10/2025
-tags: [Art, Electronics]
+completed: n/a
+tags: [Art, Watercolor, Painting]
 ---

@@ -1,17 +1,20 @@
 ---
 title: The Incuscope
-description: This was my primary work during my time in the varanasio group. It is a device to remotely monitor cells while they grow inside of the incubator.
+description: This is a tool to perform live cell microscopy inside of a standard cell incubator. It was developed as a low-cost, high quality alternative to commercial alternatives. 
 creator: Ruby Mykkanen
 collaborators: [Ariel Slonlick, Jimin Kang]
 completed: 12/10/2025
-tags: [Art, Electronics]
+tags: [Machining, Electronics, CAD, Research, ]
 ---
+During this project I...
 
-A complete log of my progress and learnings can be found [here](https://docs.google.com/document/d/1omKobVMDq-ayCLdNuhKVB4PX4agp-n-PIj3rkQeYrP0/edit?usp=sharing)
+- Designed parts using Autodesk inventor and Autodesk fusion
+- Performed mechainics and tourque calculations
+- Worked with actuators, lead screws, suppourt systems, gearboxes and more
+- Learned how to use a PCB mill, and how to design circuits in KiCad
+- Design a project with specific environmental constraints in mind (incubator conditions)
+- Collaborated as part of a team
+- Presented at lab meetings on my findings and work 
+- Machined parts using lathe, bandsaw and mill
 
-Key skills learned during this project:
-
-- Working with circuits
-- Coding an arduino
-
-Time spend on this project: 2 hours
+This project was completed during my time as a researcher in the Varanasi Group at MIT.
