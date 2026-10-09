@@ -1,13 +1,19 @@
 ---
-title: Graphic Design
-description: This is a compilation of some of my work in graphic design for fliers, posters and other media.
+title: Graphic Design Archive
+description: A collection of graphic design work I've completed over time, primarily consisting of posters, flyers, and other small-scale visual media. These projects explore a variety of styles and approaches to visual communication, often involving experimentation with typography, color, composition, and layout. Much of this work has provided an opportunity to develop my understanding of how graphic elements can be arranged to communicate information effectively, while still maintaining a distinct visual identity.
 creator: Ruby Mykkanen
-completed: n/a
-tags: [Art, Design]
+completed: Ongoing
+tags: [Art, Graphic Design, Digital Media, Typography]
 ---
-These were made using a combination of the following:
-    - Canva
-    - Pixelmator Pro
-    - Adobe Photoshop
 
-They are composed of media from my own photography (ipbone and digicam), photos from the internet, and my personal artwork. 
+Key skills developed through these projects:
+
+- Graphic design and visual communication
+- Typography and text hierarchy
+- Color theory and composition
+- Layout design and visual balance
+- Digital illustration and image manipulation
+- Designing for both print and digital media
+- Experimentation with different visual styles
+
+This archive serves as both a collection of finished designs and a record of my development as a graphic designer, particularly in how my approach to balancing visual appeal with clear and effective communication has evolved over time.

@@ -1,8 +1,15 @@
 ---
-title: Pirate Ship Mural
-description: This mural was a personal project I painted during my time in pika house at MIT.
+title: Pika Mural
+description: A mural I painted during the summer of 2026 in the independent living group house (Pika) where I was staying. Unlike some of my other art projects, this mural was done purely for fun, providing an opportunity to experiment with painting on a larger scale and contribute something personal to a shared living space. I completed the mural in August, working independently on its design and execution.
 creator: Ruby Mykkanen
-completed: 7/25/2026
+completed: 08/2026
 tags: [Art, Mural, Painting]
 ---
-This project was just for fun, and was painted using materials already at pika house. I am so greatful to my roommates and the other residents for their encouragment and suppout as I worked on this project.
+
+Key skills practiced during this project:
+
+- Large-scale painting
+- Mural design and composition
+- Planning and executing an independent art project
+- Working with a larger canvas
+- Creative expression
