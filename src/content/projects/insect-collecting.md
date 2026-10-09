@@ -2,7 +2,7 @@
 title: Insect Collection and Preservation
 description: A personal project focused on collecting, identifying, and preserving insect specimens native to Minnesota. Throughout this project, I explored the biology and anatomy of various insect species, while learning different techniques for properly pinning, positioning, and preserving specimens. The process involved developing an understanding of insect classification and the importance of proper preservation methods, both for maintaining the physical integrity of specimens and allowing for their continued study.
 creator: Ruby Mykkanen
-completed: 2024
+completed: '2024'
 tags: [Biology, Entomology, Insect Collection, Preservation]
 ---
 
