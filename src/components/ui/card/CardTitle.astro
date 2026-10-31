@@ -9,7 +9,7 @@ type Props = {
 
 const { class: className = "", ...rest } = Astro.props as Props;
 
-const titleVariants = cva("leading-none font-medium text-sm text-balance");
+const titleVariants = cva("leading-none font-medium text-medium text-balance");
 ---
 
 <div {...rest} data-slot="card-title" class={cn(titleVariants(), className)}>

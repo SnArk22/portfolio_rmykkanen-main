@@ -51,13 +51,13 @@ if (!allImages[`/src/assets/${item.collection}/${item.id}/featured.webp`]) {
     "w-full gap-4 p-5",
     variant === "grid" &&
       "relative group mb-6 break-inside-avoid flex flex-col hover:bg-muted/20 hover:-translate-y-1 transition",
-    variant === "single" && "grid md:grid-cols-6 md:grid-rows-2 gap-4",
+    variant === "single" && "grid md:grid-cols-4 md:grid-rows-2 gap-1`",
   ]}
 >
     <CardMedia
     class:list={[
       variant === "single" &&
-        "md:col-start-1 md:col-span-3 md:row-start-1 md:row-span-2",
+        "md:col-start-1 md:col-span-2 md:row-start-1 md:row-span-1",
       item.collection === "newsletters" && "md:col-span-6 md:row-span-1",
     ]}
     >
@@ -73,7 +73,7 @@ if (!allImages[`/src/assets/${item.collection}/${item.id}/featured.webp`]) {
   <CardHeader
     class:list={[
       "p-0 gap-4",
-      variant === "single" && "md:col-start-4 md:col-span-3 md:text-left md:row-start-1",
+      variant === "single" && "md:col-start-3 md:col-span-3 md:text-left md:row-start-1",
     ]}
   >
 
@@ -96,7 +96,7 @@ if (!allImages[`/src/assets/${item.collection}/${item.id}/featured.webp`]) {
       }
     </CardTitle>
 
-    <CardDescription class:list={"flex gap-2 row-start-1 col-start-4 col-span-3  "}>
+    <CardDescription class:list={"flex grid gap-1 row-start-2 col-start-1 col-span-3"}>
       {
         item.data.tags &&
           variant === "single" &&
@@ -114,8 +114,8 @@ if (!allImages[`/src/assets/${item.collection}/${item.id}/featured.webp`]) {
 
   <CardContent
     class:list={[
-      "p-3 flex flex-col gap-2",
-      variant === "single" && "md:col-span-3 md:col-start-4 md:row-start-2",
+      "p-3 flex flex-col",
+      variant === "single" && "md:col-start-1 md:col-span-4 md:row-start-2",
     ]}
   >
     {

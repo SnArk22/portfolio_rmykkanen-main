@@ -79,7 +79,7 @@ const {
 } = Astro.props as Props;
 
 const cardVariants = cva(
-  "group/card overflow-clip text-card-foreground flex flex-col gap-3 py-3 group/card [&:has(>_[data-slot=card-media]:first-child_img)]:pt-0 [a]:hover:bg-accent/5 [a]:transition-colors duration-100",
+  "group/card text-card-foreground flex flex-col gap-3 py-3 group/card [&:has(>_[data-slot=card-media]:first-child_img)]:pt-0 [a]:hover:bg-accent/5 [a]:transition-colors duration-100",
   {
     variants: {
       variant: {
